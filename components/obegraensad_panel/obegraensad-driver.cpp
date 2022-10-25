@@ -2,20 +2,20 @@
 // By /u/frumperino
 // goodwires.org
 
-#include "frekvens-driver.h"
+#include "obegraensad-driver.h"
 
 void init(int p_latch, int p_clock, int p_data, int p_enable);
 
-FrekvensPanel::FrekvensPanel(int p_latch, int p_clock, int p_data, int bitDepth,
+ObegraensadPanel::ObegraensadPanel(int p_latch, int p_clock, int p_data, int bitDepth,
                              int numPanels) : Adafruit_GFX(16, numPanels * 16)
 {
     init(p_latch, p_clock, p_data, bitDepth, numPanels);
 }
 
-FrekvensPanel::FrekvensPanel(int p_latch, int p_clock, int p_data) :
-FrekvensPanel(p_latch, p_clock, p_data, 0, 1) { }
+ObegraensadPanel::ObegraensadPanel(int p_latch, int p_clock, int p_data) :
+ObegraensadPanel(p_latch, p_clock, p_data, 0, 1) { }
 
-void FrekvensPanel::init(int p_latch, int p_clock, int p_data, int bitDepth, int numPanels)
+void ObegraensadPanel::init(int p_latch, int p_clock, int p_data, int bitDepth, int numPanels)
 {
     _pLatch = p_latch;
     _pClock = p_clock;
@@ -36,7 +36,7 @@ void FrekvensPanel::init(int p_latch, int p_clock, int p_data, int bitDepth, int
     buf = (unsigned short*) malloc(_numWords * sizeof(unsigned short));
 }
 
-void FrekvensPanel::clear()
+void ObegraensadPanel::clear()
 {
     for (int i=0;i<_numWords;i++)
     {
@@ -44,7 +44,7 @@ void FrekvensPanel::clear()
     }
 }
 
-void FrekvensPanel::writeDeepPixel(unsigned short x, unsigned short y, unsigned short value)
+void ObegraensadPanel::writeDeepPixel(unsigned short x, unsigned short y, unsigned short value)
 {
     if (x > 7) { y += 0x10; x &= 0x07; }
     unsigned int address = (x + (y << 3)) & _addressMask;
@@ -71,7 +71,7 @@ void FrekvensPanel::writeDeepPixel(unsigned short x, unsigned short y, unsigned 
     }
 }
 
-void FrekvensPanel::scan()
+void ObegraensadPanel::scan()
 {
     if (_numPages == 1)
     {
@@ -117,17 +117,17 @@ void FrekvensPanel::scan()
     }
 }
 
-unsigned short FrekvensPanel::width()
+unsigned short ObegraensadPanel::width()
 {
     return this->_width;
 }
 
-unsigned short FrekvensPanel::height()
+unsigned short ObegraensadPanel::height()
 {
     return this->_height;
 }
 
-boolean FrekvensPanel::getPixel(int16_t x, int16_t y)
+boolean ObegraensadPanel::getPixel(int16_t x, int16_t y)
 {
     if (x > 7) { y += 0x10; x &= 0x07; }
     unsigned short address = (x + (y << 3)) & _addressMask;
@@ -137,7 +137,7 @@ boolean FrekvensPanel::getPixel(int16_t x, int16_t y)
     return ((*wp) >> br) & 0x01;
 }
 
-void FrekvensPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
+void ObegraensadPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
     if ((x >= 0) && (y >= 0) && (x < _width) && ( y < _height))
     {
@@ -158,7 +158,7 @@ void FrekvensPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
     }
 }
 
-void FrekvensPanel::drawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color)
+void ObegraensadPanel::drawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color)
 {
     for (int i=0;i<h;i++)
     {
@@ -167,7 +167,7 @@ void FrekvensPanel::drawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t colo
 
 }
 
-void FrekvensPanel::drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color)
+void ObegraensadPanel::drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color)
 {
     for (int i=0;i<w;i++)
     {
@@ -175,7 +175,7 @@ void FrekvensPanel::drawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t colo
     }
 }
 
-void FrekvensPanel::fillScreen(uint16_t color)
+void ObegraensadPanel::fillScreen(uint16_t color)
 {
     for (int i=0;i<_numPages;i++)
     {

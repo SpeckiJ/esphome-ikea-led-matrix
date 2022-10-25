@@ -3,11 +3,11 @@
 #include "esphome/core/component.h"
 #include "esphome/components/display/display_buffer.h"
 
-#include "frekvens-driver.h"
+#include "obegraensad-driver.h"
 
 
 namespace esphome {
-namespace frekvenspanel {
+namespace obegraensadpanel {
 
 class Panel : public PollingComponent,
                 public display::DisplayBuffer {
@@ -58,7 +58,7 @@ class Panel : public PollingComponent,
   GPIOPin *reset_pin_;
   GPIOPin *dc_pin_;
 
-  FrekvensPanel *panel;
+  ObegraensadPanel *panel;
 };
 
 }  // namespace pcd8544
