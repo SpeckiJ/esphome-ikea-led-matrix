@@ -2,18 +2,18 @@
 #include "esphome/core/application.h"
 #include "esphome/core/helpers.h"
 
-#include "frekvens-panel.h"
+#include "obegraensad-panel.h"
 
 
 namespace esphome {
-namespace frekvenspanel {
+namespace obegraensadpanel {
 
-static const char *const TAG = "frekvenspanel";
+static const char *const TAG = "obegraensadpanel";
 
 
 void Panel::initialize() {
   this->init_internal_(this->get_buffer_length_());
-  this->panel = new FrekvensPanel(this->p_latch, this->p_clock, this->p_data);
+  this->panel = new ObegraensadPanel(this->p_latch, this->p_clock, this->p_data);
 }
 
 int Panel::get_width_internal() { return 16; }
@@ -70,5 +70,5 @@ void Panel::fill(Color color) {
     this->buffer_[i] = fill;
 }
 
-}  // namespace frekvenspanel
+}  // namespace obegraensadpanel
 }  // namespace esphome
