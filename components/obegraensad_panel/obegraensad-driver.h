@@ -13,7 +13,7 @@ class ObegraensadPanel : public Adafruit_GFX
 private:
     unsigned short _numPanels : 8;
     unsigned short _numPages : 8;
-    unsigned short _activePage : 1;
+    unsigned short _activePage : 8;
     unsigned short _bitDepth : 4;
     unsigned short _pLatch;
     unsigned short _pClock;
