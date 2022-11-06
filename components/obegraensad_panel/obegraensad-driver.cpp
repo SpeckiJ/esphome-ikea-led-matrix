@@ -87,8 +87,8 @@ void ObegraensadPanel::scan()
                 digitalWrite(_pClock, HIGH);
                 delayMicroseconds(1);
                 digitalWrite(_pClock, LOW);
-                delay(1000);
             }
+            delay(1000);
         }
         digitalWrite(_pLatch,HIGH);
         delayMicroseconds(1);
