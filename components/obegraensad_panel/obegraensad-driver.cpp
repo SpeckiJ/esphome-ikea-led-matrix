@@ -82,7 +82,7 @@ void ObegraensadPanel::scan()
             unsigned short w = *p++;
             for (int j=0;j<16;j++)
             {
-                digitalWrite(_pData, w & 0x01);
+                digitalWrite(_pData, 0x01);
                 w >>= 1;
                 digitalWrite(_pClock, HIGH);
                 delayMicroseconds(1);
@@ -92,6 +92,7 @@ void ObegraensadPanel::scan()
         digitalWrite(_pLatch,HIGH);
         delayMicroseconds(1);
         digitalWrite(_pLatch,LOW);
+        delayMicroseconds(1000);
     }
     else
     {
