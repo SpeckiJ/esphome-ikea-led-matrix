@@ -92,7 +92,7 @@ void ObegraensadPanel::scan()
         digitalWrite(_pLatch,HIGH);
         delayMicroseconds(1);
         digitalWrite(_pLatch,LOW);
-        delayMicroseconds(1000);
+        delayMicroseconds(10000);
     }
     else
     {
