@@ -143,13 +143,10 @@ void ObegraensadPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
     {
         // if (x > 7) { y += 0x10; x &= 0x07; }
         unsigned short address = x & _addressMask;
-        unsigned short ba = address >> 4;
-        unsigned short br = address & 0x0F;
-        unsigned short ms = (1 << br);
-        unsigned short* wp = &buf[ba];
+        unsigned short* wp = &buf[address];
         if (color & 0x01)
         {
-            *wp |= ms;
+            *wp = 0x01;
         }
         else
         {
