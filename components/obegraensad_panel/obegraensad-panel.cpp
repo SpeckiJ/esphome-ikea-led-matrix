@@ -32,12 +32,9 @@ void HOT Panel::display() {
     for (y = 0; y < this->get_height_internal(); y++) {
 //      cell = this->buffer_[(this->get_width_internal() * y) + x];
       this->panel->drawPixel(x, y, 0x01);
-      this->panel->scan();
-      this->panel->clear();
-      // delay(30);
     }
   }
-
+  this->panel->scan();
 }
 
 void HOT Panel::draw_absolute_pixel_internal(int x, int y, Color color) {
