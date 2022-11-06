@@ -34,7 +34,7 @@ void HOT Panel::display() {
       this->panel->drawPixel(x, y, 0x01);
       this->panel->scan();
       this->panel->clear();
-      delay(30);
+      // delay(30);
     }
   }
 
