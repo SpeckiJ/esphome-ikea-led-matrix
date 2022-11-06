@@ -142,7 +142,7 @@ void ObegraensadPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
     if ((x >= 0) && (y >= 0))
     {
         unsigned short yoff = 0;
-        if (x < 7)
+        if (y < 7)
         {
           yoff = ((8 - y) * 16) + 1;
         } else 
