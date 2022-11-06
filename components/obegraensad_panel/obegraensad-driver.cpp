@@ -139,21 +139,22 @@ boolean ObegraensadPanel::getPixel(int16_t x, int16_t y)
 
 void ObegraensadPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
-    for (unsigned short i=0; i<_addressMask; i++)
+    if ((x >= 0) && (y >= 0) && (x < _width) && ( y < _height))
     {
-      unsigned short address = i;
-      unsigned short ba = address >> 4;
-      unsigned short br = address & 0x0F;
-      unsigned short ms = (1 << br);
-      unsigned short* wp = &buf[ba];
-      if (color & 0x01)
-      {
-          *wp |= ms;
-      }
-      else
-      {
-          *wp &= (0xFFFF ^ ms);
-      }
+        // if (x > 7) { y += 0x10; x &= 0x07; }
+        unsigned short address = (x + (y << 3)) & _addressMask;
+        unsigned short ba = address >> 4;
+        unsigned short br = address & 0x0F;
+        unsigned short ms = (1 << br);
+        unsigned short* wp = &buf[ba];
+        if (color & 0x01)
+        {
+            *wp |= ms;
+        }
+        else
+        {
+            *wp &= (0xFFFF ^ ms);
+        }
     }
 }
 
