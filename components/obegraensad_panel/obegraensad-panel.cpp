@@ -31,7 +31,7 @@ void HOT Panel::display() {
   for (x = 0; x < this->get_width_internal(); x++) {
     for (y = 0; y < this->get_height_internal(); y++) {
 //      cell = this->buffer_[(this->get_width_internal() * y) + x];
-      this->panel->drawPixel(x, y, 0x01);
+      this->panel->drawPixel(x + 16, y, 0x01);
     }
   }
   this->panel->scan();
