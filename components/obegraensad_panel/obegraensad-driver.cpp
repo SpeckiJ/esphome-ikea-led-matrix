@@ -46,8 +46,8 @@ void ObegraensadPanel::clear()
 
 void ObegraensadPanel::writeDeepPixel(unsigned short x, unsigned short y, unsigned short value)
 {
-    if (x > 7) { y += 0x10; x &= 0x07; }
-    unsigned int address = (x + (y << 3)) & _addressMask;
+    // if (x > 7) { y += 0x10; x &= 0x07; }
+    unsigned int address = x & _addressMask;
     unsigned short ba = address >> 4;
     unsigned short br = address & 0x0F;
     unsigned short ms = (1 << br);
