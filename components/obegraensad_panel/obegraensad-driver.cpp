@@ -148,10 +148,6 @@ void ObegraensadPanel::drawPixel(int16_t x, int16_t y, uint16_t color)
         {
             *wp = 0x01;
         }
-        else
-        {
-            *wp &= (0xFFFF ^ ms);
-        }
     }
 }
 
